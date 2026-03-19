@@ -55,7 +55,7 @@ store-assets/                — Current Chrome Web Store asset pack
 | `storage` | Save the on/off toggle preference |
 | YouTube page access via `content_scripts.matches` | Detect supported video-link clicks on `https://www.youtube.com/*` |
 
-No data is collected or transmitted. See the full [Privacy Policy](./docs/privacy-policy.html).
+No data is collected or transmitted. See the full [Privacy Policy](https://sssstf0rest.github.io/YouTube-in-New-Tab/privacy-policy.html).
 
 ## Known Limitations
 
