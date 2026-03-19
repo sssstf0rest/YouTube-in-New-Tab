@@ -64,10 +64,12 @@
   - Added extension icon assets and wired them into the manifest.
   - Updated tab creation to insert new tabs immediately beside the current tab.
   - Enlarged and centered the red `Y` icon artwork.
-  - Created a public-hosting-ready privacy policy page for Chrome Web Store submission.
+  - Created a public-hosting-ready privacy policy page for Chrome Web Store submission under `docs/`.
   - Researched current Chrome Web Store image and privacy requirements from official Google sources.
   - Added a local generator for the store asset pack and generated promo images plus listing screenshots.
   - Wrote a submission guide with listing copy, privacy answers, and remaining personal fields.
+  - Changed watch-page behavior so the extension does not intercept when the current page is already a video.
+  - Updated store copy and store assets to match the new watch-page behavior.
 - Files created/modified:
   - `task_plan.md` (updated)
   - `progress.md` (updated)
@@ -82,7 +84,7 @@
   - `docs/implementation.md` (updated)
   - `docs/test-plan.md` (updated)
   - `docs/tasks.md` (updated)
-  - `PrivacyPolicy/index.html` (created)
+  - `docs/privacy-policy.html` (created)
   - `scripts/generate_store_assets.py` (created)
   - `store-assets/README.md` (created)
   - `docs/chrome-web-store-submission.md` (created)

@@ -37,6 +37,7 @@ sequenceDiagram
 - Owns DOM event handling.
 - Reads the `enabled` setting from `chrome.storage.sync`.
 - Reacts to `chrome.storage.onChanged` so popup changes apply immediately.
+- Skips interception when the current page is already a YouTube watch page.
 - Never tries to use `chrome.tabs` directly.
 
 ### Service worker
@@ -94,6 +95,7 @@ Default:
 
 ## Interception Rules
 - Only plain primary-button clicks
+- Disable interception when the current page is already a supported YouTube watch page
 - Ignore events with `Ctrl`, `Cmd`, `Shift`, or `Alt`
 - Ignore links already targeting `_blank`
 - Only same-origin `https://www.youtube.com/watch?...` links

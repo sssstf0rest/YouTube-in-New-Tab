@@ -151,7 +151,7 @@ async function initializeEnabledState() {
 }
 
 function handleDocumentClick(event) {
-  if (!extensionEnabled || !shouldInterceptClick(event)) {
+  if (!extensionEnabled || isCurrentPageWatchVideo() || !shouldInterceptClick(event)) {
     return;
   }
 
@@ -198,6 +198,10 @@ function shouldInterceptClick(event) {
     !event.shiftKey &&
     !event.altKey
   );
+}
+
+function isCurrentPageWatchVideo() {
+  return window.location.pathname === "/watch" && new URLSearchParams(window.location.search).has("v");
 }
 
 function getAnchorFromEvent(event) {
@@ -279,7 +283,7 @@ function toSupportedVideoUrl(rawHref) {
       <label class="toggle-row" for="enabledToggle">
         <span class="toggle-copy">
           <span class="toggle-label">Enabled</span>
-          <span class="toggle-note">For normal <code>/watch</code> links on <code>www.youtube.com</code>.</span>
+          <span class="toggle-note">Works on feed, search, and channel pages. Disabled on open video pages.</span>
         </span>
 
         <span class="toggle-shell">

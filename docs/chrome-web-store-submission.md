@@ -37,7 +37,7 @@ This file gives you the current asset checklist, draft listing copy, and recomme
 - [store-assets/screenshots/screenshot-01-search-results.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-01-search-results.png)
 - [store-assets/screenshots/screenshot-02-home-feed.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-02-home-feed.png)
 - [store-assets/screenshots/screenshot-03-popup-enabled.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-03-popup-enabled.png)
-- [store-assets/screenshots/screenshot-04-watch-page.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-04-watch-page.png)
+- [store-assets/screenshots/screenshot-04-channel-grid.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-04-channel-grid.png)
 - [store-assets/screenshots/screenshot-05-popup-disabled.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-05-popup-disabled.png)
 
 ## Suggested Answers For The Store Listing Tab
@@ -56,18 +56,21 @@ Keep your place on YouTube while opening videos in a separate tab.
 
 YouTube in New Tab changes standard YouTube watch-link clicks so videos open in a new tab immediately beside your current tab instead of replacing the page you are on.
 
-This is useful when you are browsing Home, Search, Subscriptions, Channel pages, or watch-page recommendations and want to keep your current view in place while opening the next video.
+This is useful when you are browsing Home, Search, Subscriptions, or Channel pages and want to keep your current view in place while opening the next video.
+
+This is an open-source project, check the implementation at https://github.com/sssstf0rest/YouTube-in-New-Tab
 
 Features:
 - Opens standard YouTube /watch links in a new adjacent tab
 - Keeps your current YouTube page in place
-- Works with Home, Search, Subscriptions, channel video grids, and recommendations
+- Works with Home, Search, Subscriptions, and channel video grids
 - Includes a simple popup switch to turn the feature on or off instantly
 - Uses only the minimum storage permission needed to save the on/off preference
 
 Scope:
 - Targets www.youtube.com
 - Changes standard /watch link behavior only
+- Disables itself on open YouTube video pages so normal same-tab video navigation is preserved there
 - Leaves Shorts, playlists, channels, and normal modifier-click behavior untouched
 
 No ads. No analytics. No developer-run backend.
@@ -100,7 +103,7 @@ No ads. No analytics. No developer-run backend.
 1. `screenshot-01-search-results.png`
 2. `screenshot-02-home-feed.png`
 3. `screenshot-03-popup-enabled.png`
-4. `screenshot-04-watch-page.png`
+4. `screenshot-04-channel-grid.png`
 5. `screenshot-05-popup-disabled.png`
 
 ## Suggested Answers For The Privacy Tab
@@ -117,7 +120,7 @@ No ads. No analytics. No developer-run backend.
 ### Privacy policy URL
 - You must host the existing privacy policy publicly over HTTPS.
 - If you publish it with GitHub Pages, a likely URL is:
-  - `https://sssstf0rest.github.io/Youtube-in-New-Tab/PrivacyPolicy/`
+  - `https://sssstf0rest.github.io/YouTube-in-New-Tab/docs/privacy-policy.html`
 - Do not paste a local file path into the dashboard.
 
 ### Data usage disclosure
@@ -149,6 +152,7 @@ Check the certifications that state the data:
 - `Load the unpacked extension, open https://www.youtube.com/ or a YouTube results page, and left-click a standard /watch video link.`
 - `Expected result: the video opens in a new active tab immediately beside the current tab, and the original YouTube page stays in place.`
 - `Open the extension popup and switch it off to verify native YouTube navigation returns.`
+- `Open any YouTube watch page and click a recommended video to verify watch pages are intentionally not intercepted and native same-tab navigation remains in place there.`
 
 ## Developer Account / Registration Blanks You Still Need To Fill Yourself
 - Developer account email: use an email you actively monitor
@@ -157,7 +161,7 @@ Check the certifications that state the data:
 - Official URL: only if you verify a site
 
 ## Important Remaining Publishing Tasks
-- Replace the contact placeholder in [PrivacyPolicy/index.html](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/PrivacyPolicy/index.html)
+- Replace the contact placeholder in [docs/privacy-policy.html](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/docs/privacy-policy.html)
 - Host the privacy policy at a public HTTPS URL
 - Package the extension ZIP for upload
 - Manually verify the screenshots against the final extension build before submission

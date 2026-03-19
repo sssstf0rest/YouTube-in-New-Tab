@@ -2,11 +2,12 @@
 
 ## Acceptance Criteria
 - Plain left-click on a supported YouTube `/watch` link opens the video in a new active tab immediately beside the current tab.
-- The current YouTube page remains on the same feed, search results, or recommendations surface.
+- The current YouTube page remains on the same feed, search results, subscriptions, or channel-video surface.
 - Disabled mode restores native YouTube navigation.
 - Non-video links are untouched.
 - Modifier-click and non-primary-button behaviors are untouched.
 - Shorts links are not intercepted in v1.
+- If the current page is already a watch page, native same-tab video navigation remains unchanged.
 - Popup state changes apply live without reloading the YouTube page.
 
 ## Manual Test Matrix
@@ -17,7 +18,7 @@
 | Search results | Plain left-click a result | New active tab opens immediately to the right of the current tab; search results page stays in place |
 | Subscriptions feed | Plain left-click a video | New active tab opens immediately to the right of the current tab; subscriptions list stays in place |
 | Channel videos grid | Plain left-click a video card | New active tab opens immediately to the right of the current tab; channel page stays in place |
-| Watch page sidebar recommendations | Plain left-click a recommendation | New active tab opens immediately to the right of the current tab; current watch page stays in place |
+| Current page is a watch page | Plain left-click a recommended video on the sidebar | Native same-tab navigation occurs; the extension does not open a new tab |
 | Disabled mode | Turn popup toggle off, then plain left-click a video | Current page navigates normally inside the same tab |
 | Channel avatar or channel name | Plain left-click | Native channel navigation remains unchanged |
 | Playlist link | Plain left-click | Native behavior remains unchanged |
@@ -74,6 +75,7 @@
 ### A click still navigates in the current tab while enabled
 - Likely causes:
   - the link is out of scope
+  - the current page is already a YouTube watch page, where interception is intentionally disabled
   - the content script did not load on the page
   - the page interaction used a modifier key or non-primary mouse button
 
@@ -86,6 +88,6 @@
 ## Regression Checklist
 - [ ] Home feed still scrolls and behaves normally
 - [ ] Search filters and navigation controls still work
-- [ ] Watch-page controls still work
+- [ ] Watch-page recommendation clicks remain native same-tab navigation
 - [ ] Channel navigation still works
 - [ ] Browser native tab shortcuts remain unchanged

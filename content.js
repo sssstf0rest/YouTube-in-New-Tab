@@ -28,7 +28,7 @@ async function initializeEnabledState() {
 }
 
 function handleDocumentClick(event) {
-  if (!extensionEnabled || !shouldInterceptClick(event)) {
+  if (!extensionEnabled || isCurrentPageWatchVideo() || !shouldInterceptClick(event)) {
     return;
   }
 
@@ -75,6 +75,10 @@ function shouldInterceptClick(event) {
     !event.shiftKey &&
     !event.altKey
   );
+}
+
+function isCurrentPageWatchVideo() {
+  return window.location.pathname === "/watch" && new URLSearchParams(window.location.search).has("v");
 }
 
 function getAnchorFromEvent(event) {

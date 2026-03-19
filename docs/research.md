@@ -55,12 +55,13 @@ Build a Chrome extension that turns a plain left-click on a YouTube video link i
 ## Chosen Method
 1. Inject a content script on `https://www.youtube.com/*` at `document_start`.
 2. Listen for plain left-clicks during the capture phase.
-3. Resolve the nearest anchor from the event path.
-4. Only continue for same-origin `/watch` URLs that include a `v` query parameter.
-5. Cancel the original navigation.
-6. Send a runtime message to the service worker.
-7. Call `chrome.tabs.create({ url, active: true, windowId, index, openerTabId })` in the service worker so the new tab opens immediately to the right of the current YouTube tab.
-8. Keep the current page unchanged.
+3. Skip interception entirely when the current page is already a YouTube watch page.
+4. Resolve the nearest anchor from the event path.
+5. Only continue for same-origin `/watch` URLs that include a `v` query parameter.
+6. Cancel the original navigation.
+7. Send a runtime message to the service worker.
+8. Call `chrome.tabs.create({ url, active: true, windowId, index, openerTabId })` in the service worker so the new tab opens immediately to the right of the current YouTube tab.
+9. Keep the current page unchanged.
 
 ## Alternatives Considered
 
@@ -86,7 +87,9 @@ Build a Chrome extension that turns a plain left-click on a YouTube video link i
 - Supported links: same-origin `/watch?v=...`
 - Open behavior: new active tab
 - Setting: global `enabled` boolean only
+- Watch-page behavior: disabled when the current page is already a YouTube video watch page
 - Explicitly out of scope:
+  - Opening watch-page recommendations in a new tab
   - Shorts interception
   - Playlist item interception logic
   - Background-tab mode

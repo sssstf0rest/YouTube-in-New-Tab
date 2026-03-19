@@ -11,7 +11,7 @@ This folder contains the generated asset pack for the Chrome Web Store listing.
 - `promo-marquee-1400x560.png`
 - `screenshots/screenshot-02-home-feed.png`
 - `screenshots/screenshot-03-popup-enabled.png`
-- `screenshots/screenshot-04-watch-page.png`
+- `screenshots/screenshot-04-channel-grid.png`
 - `screenshots/screenshot-05-popup-disabled.png`
 
 ## Official sizing used

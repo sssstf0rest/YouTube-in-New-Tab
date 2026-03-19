@@ -24,6 +24,7 @@
 |----------|-----------|
 | Intercept clicks rather than redirecting requests | The requirement is to preserve the current page and open a separate tab, which request-redirection APIs do not model well. |
 | Match only same-origin `/watch` URLs with a `v` parameter | Keeps v1 narrow and avoids surprising behavior on Shorts, channels, playlists, and navigation chrome. |
+| Disable interception on current watch pages | Preserves normal same-tab video navigation once the user is already in a video-viewing flow. |
 | Keep a cached `enabled` state in the content script and update via `chrome.storage.onChanged` | Allows popup changes to take effect immediately without reloading YouTube. |
 | Revalidate the URL in the service worker before opening a tab | Defense-in-depth for any incoming runtime message. |
 | Use plain HTML/CSS/JS with no build tooling | Fastest path for a greenfield repo and easiest to inspect in docs. |

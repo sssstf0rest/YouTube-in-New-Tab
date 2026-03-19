@@ -18,7 +18,7 @@
 - [ ] Verify search results behavior
 - [ ] Verify Subscriptions behavior
 - [ ] Verify channel video-grid behavior
-- [ ] Verify watch-page recommendation behavior
+- [ ] Verify watch pages are intentionally not intercepted
 - [ ] Verify disabled mode restores native navigation
 - [ ] Verify `Cmd`-click, `Ctrl`-click, `Shift`-click, middle-click, and right-click remain unchanged
 - [ ] Verify Shorts links are not intercepted
