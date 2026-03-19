@@ -15,6 +15,9 @@
 - Chrome’s message-passing docs confirm one-time `chrome.runtime.sendMessage()` is the correct bridge between a content script and service worker.
 - Chrome’s storage docs recommend `storage.sync` for settings that should follow the user’s browser profile.
 - MDN documents `preventDefault()`, `stopImmediatePropagation()`, `composedPath()`, `closest()`, and `MouseEvent.button`, which together support a robust delegated click interceptor.
+- Chrome Web Store image guidance currently requires a `128x128` icon, a `440x280` small promo tile, and at least one screenshot at `1280x800` or `640x400`.
+- Chrome Web Store privacy guidance currently requires a single purpose statement, a privacy policy URL, data usage disclosures, and limited-use certification before publication or update.
+- Chrome’s user-data FAQ states that products handling sensitive user data still need a privacy policy even when the data is only stored locally or in `chrome.storage.sync`.
 
 ## Technical Decisions
 | Decision | Rationale |
@@ -24,6 +27,8 @@
 | Keep a cached `enabled` state in the content script and update via `chrome.storage.onChanged` | Allows popup changes to take effect immediately without reloading YouTube. |
 | Revalidate the URL in the service worker before opening a tab | Defense-in-depth for any incoming runtime message. |
 | Use plain HTML/CSS/JS with no build tooling | Fastest path for a greenfield repo and easiest to inspect in docs. |
+| Generate Chrome Web Store assets locally with Pillow | Produces a repeatable red-and-white asset pack without depending on external design tools. |
+| Recommend conservative privacy disclosure for submission | The extension handles YouTube click interactions and clicked watch URLs to provide its single purpose, so conservative disclosure reduces review risk. |
 
 ## Issues Encountered
 | Issue | Resolution |
@@ -38,6 +43,12 @@
 - Chrome implement action: https://developer.chrome.com/docs/extensions/develop/ui/implement-action
 - Chrome add popup: https://developer.chrome.com/docs/extensions/develop/ui/add-popup
 - Chrome debugging extensions: https://developer.chrome.com/docs/extensions/mv2/tutorials/debugging
+- Chrome Web Store images: https://developer.chrome.com/docs/webstore/images
+- Chrome Web Store listing fields: https://developer.chrome.com/docs/webstore/cws-dashboard-listing/
+- Chrome Web Store privacy fields: https://developer.chrome.com/docs/webstore/cws-dashboard-privacy
+- Chrome Web Store privacy policy guidance: https://developer.chrome.com/docs/webstore/program-policies/privacy
+- Chrome Web Store limited use guidance: https://developer.chrome.com/docs/webstore/program-policies/limited-use
+- Chrome Web Store user data FAQ: https://developer.chrome.com/docs/webstore/program-policies/user-data-faq
 - MDN `preventDefault()`: https://developer.mozilla.org/en-US/docs/Web/API/Event/preventDefault
 - MDN `stopImmediatePropagation()`: https://developer.mozilla.org/en-US/docs/Web/API/Event/stopImmediatePropagation
 - MDN `composedPath()`: https://developer.mozilla.org/en-US/docs/Web/API/Event/composedPath
