@@ -25,20 +25,17 @@ This file gives you the current asset checklist, draft listing copy, and recomme
 ## Asset Files To Upload
 
 ### Icon
-- Use: [icons/icon-128.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/icons/icon-128.png)
+- Use: [icons/icon-128.png](../icons/icon-128.png)
 
 ### Small promo tile
-- Use: [store-assets/promo-small-440x280.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/promo-small-440x280.png)
+- Use: [store-assets/design 440 x 280.png](../store-assets/design%20440%20x%20280.png)
 
 ### Marquee promo tile
-- Optional but recommended: [store-assets/promo-marquee-1400x560.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/promo-marquee-1400x560.png)
+- Optional but recommended: [store-assets/design 1440 x 560.png](../store-assets/design%201440%20x%20560.png)
+  Current file name says `1440 x 560`, but the actual image size is `1400x560`.
 
 ### Screenshots
-- [store-assets/screenshots/screenshot-01-search-results.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-01-search-results.png)
-- [store-assets/screenshots/screenshot-02-home-feed.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-02-home-feed.png)
-- [store-assets/screenshots/screenshot-03-popup-enabled.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-03-popup-enabled.png)
-- [store-assets/screenshots/screenshot-04-channel-grid.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-04-channel-grid.png)
-- [store-assets/screenshots/screenshot-05-popup-disabled.png](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/store-assets/screenshots/screenshot-05-popup-disabled.png)
+- Use: [store-assets/design 1280 x 800.png](../store-assets/design%201280%20x%20800.png)
 
 ## Suggested Answers For The Store Listing Tab
 
@@ -90,21 +87,18 @@ No ads. No analytics. No developer-run backend.
 - Optional only. Add one later if you record a short feature demo.
 
 ### Homepage URL
-- Recommended: `https://github.com/sssstf0rest/Youtube-in-New-Tab`
+- Recommended: `https://github.com/sssstf0rest/YouTube-in-New-Tab`
 
 ### Support URL
-- Recommended: `https://github.com/sssstf0rest/Youtube-in-New-Tab/issues`
+- Recommended: `https://github.com/sssstf0rest/YouTube-in-New-Tab/issues`
 
 ### Official URL
 - `Leave blank unless you verify a site in Search Console`
 - If you later enable GitHub Pages or use your own domain, use that verified site here.
 
-## Suggested Screenshot Order
-1. `screenshot-01-search-results.png`
-2. `screenshot-02-home-feed.png`
-3. `screenshot-03-popup-enabled.png`
-4. `screenshot-04-channel-grid.png`
-5. `screenshot-05-popup-disabled.png`
+## Screenshot Recommendation
+- Upload `design 1280 x 800.png` as the current standard screenshot.
+- If you later create multiple final screenshots, keep the file list in this document aligned with the actual contents of `store-assets/`.
 
 ## Suggested Answers For The Privacy Tab
 
@@ -161,7 +155,7 @@ Check the certifications that state the data:
 - Official URL: only if you verify a site
 
 ## Important Remaining Publishing Tasks
-- Replace the contact placeholder in [docs/privacy-policy.html](/Users/sssst/Files/Workspace/Repos/YouTube-in-New-Tab/docs/privacy-policy.html)
+- Replace the contact placeholder in [docs/privacy-policy.html](./privacy-policy.html)
 - Host the privacy policy at a public HTTPS URL
 - Package the extension ZIP for upload
-- Manually verify the screenshots against the final extension build before submission
+- Manually verify the current `store-assets` files against the final extension build before submission

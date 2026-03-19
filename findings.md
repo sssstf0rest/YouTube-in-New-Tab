@@ -18,6 +18,7 @@
 - Chrome Web Store image guidance currently requires a `128x128` icon, a `440x280` small promo tile, and at least one screenshot at `1280x800` or `640x400`.
 - Chrome Web Store privacy guidance currently requires a single purpose statement, a privacy policy URL, data usage disclosures, and limited-use certification before publication or update.
 - Chrome’s user-data FAQ states that products handling sensitive user data still need a privacy policy even when the data is only stored locally or in `chrome.storage.sync`.
+- The repo’s current canonical store assets are now the manually maintained files in `store-assets/`, not the previously generated screenshot set.
 
 ## Technical Decisions
 | Decision | Rationale |

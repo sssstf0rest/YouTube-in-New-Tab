@@ -66,10 +66,11 @@
   - Enlarged and centered the red `Y` icon artwork.
   - Created a public-hosting-ready privacy policy page for Chrome Web Store submission under `docs/`.
   - Researched current Chrome Web Store image and privacy requirements from official Google sources.
-  - Added a local generator for the store asset pack and generated promo images plus listing screenshots.
+  - Documented the Chrome Web Store asset pack and aligned the repo around the current manual design files.
   - Wrote a submission guide with listing copy, privacy answers, and remaining personal fields.
   - Changed watch-page behavior so the extension does not intercept when the current page is already a video.
   - Updated store copy and store assets to match the new watch-page behavior.
+  - Added a GitHub-facing README for the repository.
 - Files created/modified:
   - `task_plan.md` (updated)
   - `progress.md` (updated)
@@ -85,9 +86,9 @@
   - `docs/test-plan.md` (updated)
   - `docs/tasks.md` (updated)
   - `docs/privacy-policy.html` (created)
-  - `scripts/generate_store_assets.py` (created)
   - `store-assets/README.md` (created)
   - `docs/chrome-web-store-submission.md` (created)
+  - `README.md` (created)
 
 ## Test Results
 | Test | Input | Expected | Actual | Status |
@@ -97,8 +98,6 @@
 | Service worker syntax | `node --check service-worker.js` | No syntax errors | Check passed | pass |
 | Content script syntax | `node --check content.js` | No syntax errors | Check passed | pass |
 | Popup script syntax | `node --check popup.js` | No syntax errors | Check passed | pass |
-| Store asset generator syntax | `python3 -m py_compile scripts/generate_store_assets.py` | No syntax errors | Check passed | pass |
-| Store asset generation | `python3 scripts/generate_store_assets.py` | Generate promo images and screenshots | All expected files created under `store-assets/` | pass |
 
 ## Error Log
 | Timestamp | Error | Attempt | Resolution |
