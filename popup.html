@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>YouTube in New Tab</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <main class="popup">
+      <div class="header">
+        <span class="icon-mark" aria-hidden="true">Y</span>
+        <div class="header-copy">
+          <h1 class="title">YouTube in New Tab</h1>
+          <p class="summary">Open YouTube video links in a new tab.</p>
+        </div>
+      </div>
+
+      <label class="toggle-row" for="enabledToggle">
+        <span class="toggle-copy">
+          <span class="toggle-label">Enabled</span>
+          <span class="toggle-note">For normal <code>/watch</code> links on <code>www.youtube.com</code>.</span>
+        </span>
+
+        <span class="toggle-shell">
+          <input id="enabledToggle" class="toggle-input" type="checkbox" />
+          <span class="toggle-track" aria-hidden="true">
+            <span class="toggle-thumb"></span>
+          </span>
+        </span>
+      </label>
+
+      <div class="status-row" aria-live="polite">
+        <span class="status-label">Status</span>
+        <span id="statusText" class="status-pill">On</span>
+      </div>
+    </main>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
