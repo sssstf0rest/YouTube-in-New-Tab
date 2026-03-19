@@ -1,114 +1,79 @@
 # YouTube in New Tab
 
-YouTube in New Tab is a Chrome extension that opens supported YouTube video links in a new adjacent tab instead of replacing the current page.
+A lightweight Chrome extension that opens supported YouTube video links in a new adjacent tab instead of replacing the current page.
 
-It is designed for browsing surfaces like Home, Search, Subscriptions, and channel video grids, where you want to keep your current page in place while opening the next video.
+## Features
 
-## What It Does
+- **Open in adjacent tab** — Left-click a supported YouTube video link and open it in a new tab right beside the current tab.
+- **On/Off toggle** — Click the extension icon in the toolbar to enable or disable with a single switch.
+- **Smart behavior** — Works on YouTube browsing surfaces like Home, Search, Subscriptions, and channel video grids.
+- **Watch-page safe** — When the current page is already a YouTube video watch page, the extension does not intercept clicks and normal same-tab navigation is preserved.
+- **Minimal footprint** — No analytics, no tracking, no external requests. Just a content script, a service worker, and a small popup.
 
-- Opens standard YouTube `/watch` links in a new active tab beside the current tab
-- Keeps the current YouTube page in place on feed, search, subscriptions, and channel pages
-- Includes a simple popup toggle to enable or disable the behavior
-- Stores only a single on/off setting with `chrome.storage.sync`
+## Install from Chrome Web Store
 
-## Important Behavior
+> Coming soon
 
-- The extension runs only on `https://www.youtube.com/*`
-- It only targets standard `/watch?v=...` video links
-- It preserves normal browser behavior for `Ctrl`/`Cmd` click, `Shift` click, middle click, and right click
-- It does not intercept Shorts, playlists, channel navigation, or other non-watch links
-- If the current page is already a YouTube watch page, the extension does not intercept clicks and normal same-tab video navigation is preserved
+## Install (Development)
 
-## Why This Exists
+1. Clone or download this repository.
+2. Open `chrome://extensions` in Chrome.
+3. Enable **Developer mode**.
+4. Click **Load unpacked** and select the project folder.
+5. Open YouTube and reload any already-open YouTube tabs so the content script activates.
 
-On YouTube, a normal left-click usually replaces the current tab. This extension changes that behavior for supported pages so you can keep browsing without losing your place.
+## How It Works
 
-## Tech Stack
-
-- Chrome Extension Manifest V3
-- Content script for YouTube page click interception
-- Service worker for `chrome.tabs.create()`
-- Popup UI with a single enable or disable switch
-- Plain HTML, CSS, and JavaScript with no build step for the extension itself
-
-## Permissions
-
-The extension uses:
-
-- `storage`
-  Used only to save the user's on/off preference.
-
-It does not request broad extra permissions such as `tabs`, `webRequest`, or `declarativeNetRequest`.
-
-## Install Locally
-
-1. Open `chrome://extensions`
-2. Turn on Developer mode
-3. Click `Load unpacked`
-4. Select this repository folder
-5. Open YouTube and test a standard video link from Home, Search, Subscriptions, or a channel page
+1. A content script is injected into `https://www.youtube.com/*`.
+2. It listens for capture-phase `click` events.
+3. On a plain left-click:
+   - If the extension is disabled — **skip**.
+   - If the current page is already a YouTube watch page — **skip**.
+   - If the click is on an unsupported or non-video link — **skip**.
+   - If the click uses modifier keys or already targets `_blank` — **skip**.
+   - Otherwise — send an `OPEN_VIDEO_TAB` message to the service worker.
+4. The service worker calls `chrome.tabs.create()` and inserts the new tab immediately to the right of the current tab.
 
 ## Project Structure
 
 ```text
-.
-├── manifest.json
-├── service-worker.js
-├── content.js
-├── popup.html
-├── popup.css
-├── popup.js
-├── icons/
-├── docs/
-│   ├── architecture.md
-│   ├── chrome-web-store-submission.md
-│   ├── implementation.md
-│   ├── privacy-policy.html
-│   ├── research.md
-│   ├── tasks.md
-│   └── test-plan.md
-├── store-assets/
-└── README.md
+manifest.json                — Extension manifest (Manifest V3)
+service-worker.js            — Background service worker: opens the new adjacent tab
+content.js                   — Content script: detects supported YouTube video-link clicks
+popup.html                   — Toolbar popup with on/off toggle
+popup.js                     — Popup logic: reads/writes enabled state
+popup.css                    — Popup styling
+icons/                       — Extension icons
+docs/                        — Architecture, implementation notes, privacy policy, and store docs
+store-assets/                — Current Chrome Web Store asset pack
 ```
+
+## Permissions
+
+| Permission | Why |
+|---|---|
+| `storage` | Save the on/off toggle preference |
+| YouTube page access via `content_scripts.matches` | Detect supported video-link clicks on `https://www.youtube.com/*` |
+
+No data is collected or transmitted. See the full [Privacy Policy](./docs/privacy-policy.html).
+
+## Known Limitations
+
+- **Only works on `www.youtube.com`** — It does not target `m.youtube.com`, `music.youtube.com`, or other sites.
+- **Only standard `/watch` links are changed** — Shorts, playlists, channel navigation, and other non-watch links keep their normal behavior.
+- **Does not intercept on watch pages** — If the current page is already a video watch page, the extension intentionally stays out of the way.
+- **Does not work on Chrome internal pages** — Chrome blocks extension content scripts on pages like `chrome://*` and the Chrome Web Store.
+- **Newly installed** — Already-open YouTube tabs need a reload for the content script to activate.
 
 ## Documentation
 
-- Architecture: [docs/architecture.md](./docs/architecture.md)
-- Implementation details: [docs/implementation.md](./docs/implementation.md)
-- Research notes: [docs/research.md](./docs/research.md)
-- Test plan: [docs/test-plan.md](./docs/test-plan.md)
-- Chrome Web Store submission guide: [docs/chrome-web-store-submission.md](./docs/chrome-web-store-submission.md)
-- Privacy policy: [docs/privacy-policy.html](./docs/privacy-policy.html)
+- [Architecture](./docs/architecture.md)
+- [Implementation Guide](./docs/implementation.md)
+- [Research Notes](./docs/research.md)
+- [Test Plan](./docs/test-plan.md)
+- [Chrome Web Store Submission Guide](./docs/chrome-web-store-submission.md)
+- [Privacy Policy](./docs/privacy-policy.html)
 
-## Chrome Web Store Assets
+## License
 
-The current canonical store asset pack is in [store-assets](./store-assets/).
-
-Current standard files:
-
-- `design 440 x 280.png`
-  Small promo tile
-- `design 1440 x 560.png`
-  Wide promo graphic file used as the marquee asset source
-- `design 1280 x 800.png`
-  Store screenshot
-- `design 3840 x 2160.png`
-  High-resolution master artwork
-- `design.pptx`
-  Editable source deck
-
-## Privacy
-
-The extension does not use analytics, ads, or a developer-run backend. It stores only a single setting:
-
-```json
-{ "enabled": true | false }
-```
-
-See the full privacy policy at [docs/privacy-policy.html](./docs/privacy-policy.html).
-
-## Development Notes
-
-- Store-related copy and submission answers are maintained in [docs/chrome-web-store-submission.md](./docs/chrome-web-store-submission.md)
-- The current manually prepared files inside `store-assets/` are the standard assets for publication
-- If you change user-facing behavior, update both the extension files and the docs before publishing
+MIT
