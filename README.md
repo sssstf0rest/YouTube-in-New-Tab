@@ -12,7 +12,7 @@ A lightweight Chrome extension that opens supported YouTube video links in a new
 
 ## Install from Chrome Web Store
 
-> Coming soon
+Install directly from the [Chrome Web Store](https://chromewebstore.google.com/detail/youtube-in-new-tab/libbojpdkncihehffopapkegmonfkbdp)
 
 ## Install (Development)
 
